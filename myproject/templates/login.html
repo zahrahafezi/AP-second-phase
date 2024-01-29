@@ -1,0 +1,7 @@
+<h1 style="color: blueviolet">Login</h1>
+<form style="color: mediumslateblue;" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button style="color: darkcyan;" type="submit">Login</button>
+    <a style="color: brown;" href="{% url 'signup' %}">Dont have Account Create</a>
+</form>
