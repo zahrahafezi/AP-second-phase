@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from .forms import UserCreationForm, LoginForm
 
 
 # Create your views here.
+
+
 # Home page
 def index(request):
     return render(request, 'index.html')
@@ -15,7 +18,11 @@ def user_signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
@@ -31,7 +38,11 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
+                messages.success(request, "با موفقیت وارد شدید.")
                 return redirect('home')
+            else:
+                messages.success(request, "کاربری با این مشخصات یافت نشد.")
+                return redirect('login')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
@@ -40,4 +51,6 @@ def user_login(request):
 # logout page
 def user_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
+
+# TODO massage , clinic member views
