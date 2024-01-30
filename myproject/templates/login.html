@@ -1,9 +1,9 @@
-<h1 style="color: white">Login</h1>
-<form style="color: black;" method="POST">
+<h1 style="color: white;position: absolute;top: 100px; right: 48%">Login</h1>
+<form style="color: black;position: absolute; top: 200px; right: 41%;" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button style="color: darkcyan;" type="submit">Login</button>
-    <a style="color: brown;" href="{% url 'signup' %}">Dont have Account Create</a>
+    <a style="color: black;" href="{% url 'signup' %}">Dont have Account Create!</a>
 </form>
 
 <div class="header-text">
@@ -12,10 +12,11 @@
 
 <style>
   body {
-    background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    {#background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");#}
+      background: linear-gradient(to bottom, #1d7e8f, #918f25) no-repeat center center;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
   }
 </style>
 

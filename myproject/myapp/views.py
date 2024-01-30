@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import UserCreationForm, LoginForm
+from .forms import UserCreationForm, LoginForm, SignupForm
 
 
 # Create your views here.
@@ -17,9 +17,20 @@ def user_signup(request):
     # if the request type is POST
     if request.method == 'POST':
         # create an object from the registration form with the request data
-        form = UserCreationForm(request.POST)
+        # !!!!!!!!!
+        form = SignupForm(request.POST)
         # if the form is valid
         if form.is_valid():
+            # اگر کاربر بیمار باشد
+            if form.cleaned_data['role'] == 'patient':
+                # TODO this part
+                # انجام اقدامات مربوط به کاربر بیمار
+                pass
+            # اگر کاربر منشی باشد
+            elif form.cleaned_data['role'] == 'secretary':
+                # TODO this part
+                # انجام اقدامات مربوط به کاربر منشی
+                pass
             # saving the user in the database
             form.save()
             username = form.cleaned_data['username']
@@ -30,7 +41,7 @@ def user_signup(request):
     # if the request type is GET
     else:
         # create an empty registration form object
-        form = UserCreationForm()
+        form = SignupForm()
     # rendering
     return render(request, 'signup.html', {'form': form})
 

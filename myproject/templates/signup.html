@@ -1,8 +1,8 @@
 <h1 style="color: white;">Signup</h1>
-<form style="color: black" method="POST">
+<form style="color: white" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button style="color: black;" type="submit">Signup</button>
+        <button style="color: black;" type="submit">Signup</button>
     <a style="color: blue;" href="{% url 'login' %}">Already have account?</a>
 </form>
 
@@ -12,9 +12,8 @@
 
 <style>
   body {
-    background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    {#background-image: url("https://rozup.ir/view/2155849/LG_6348619%D9%84%D8%A7%D8%A8%DB%8C%20%D9%88%D8%B1%D9%88%D8%AF%DB%8C%201.jpg");#}
+      background-size: cover;
+      background: linear-gradient(to bottom, #567277, #732554) no-repeat center center;
   }
 </style>
