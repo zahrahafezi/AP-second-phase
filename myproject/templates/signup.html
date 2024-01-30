@@ -1,7 +1,20 @@
-<h1 style="color: aqua">Signup</h1>
-<form style="color: rebeccapurple" method="POST">
+<h1 style="color: white;">Signup</h1>
+<form style="color: black" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button style="color: black;" type="submit">Signup</button>
     <a style="color: blue;" href="{% url 'login' %}">Already have account?</a>
 </form>
+
+<div class="header-text">
+    <div style="color: black;position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 30px; white-space: nowrap;">SHARIF CLINIC :)</div>
+</div>
+
+<style>
+  body {
+    background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+</style>

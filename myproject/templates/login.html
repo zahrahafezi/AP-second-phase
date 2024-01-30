@@ -1,7 +1,33 @@
-<h1 style="color: blueviolet">Login</h1>
-<form style="color: mediumslateblue;" method="POST">
+<h1 style="color: white">Login</h1>
+<form style="color: black;" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button style="color: darkcyan;" type="submit">Login</button>
     <a style="color: brown;" href="{% url 'signup' %}">Dont have Account Create</a>
 </form>
+
+<div class="header-text">
+    <div style="color: black; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 30px; white-space: nowrap;">SHARIF CLINIC :)</div>
+</div>
+
+<style>
+  body {
+    background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+<head>
+    <header>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success  alert-dismissible fade show text-center " role="alert">
+                <h3 class="display-3">{{ message }}</h3>
+                <button type="button" class="btn-close fs-1 position-absolute top-50 start-0 translate-middle-y" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </header>
+</head>
