@@ -1,0 +1,44 @@
+{% if request.user.is_authenticated %}
+    <p id="username" style="color: darkred;background-color: burlywood;border-radius:5px;position: absolute; top: 30px; right: 10px;">{{ request.user.username }}</p>
+    <p id="success-message" style="opacity: 0;font-size: 20; transition: opacity 1.5s; color: darkred;background-color: burlywood;border-radius:5px;position: absolute; top: 55px; right: 10px;">با موفقیت وارد شدید!</p>
+    <a style="color: brown;background-color: burlywood;border-radius:5px;position: absolute; top: 10px; right: 10px;" href="{% url 'logout' %}">Logout</a>
+{% else %}
+    <a style="color: brown;background-color: burlywood;border-radius:5px; position: absolute; top: 10px; right: 10px;" href="{% url 'login' %}">Login</a>
+    <a style="color: brown;background-color: burlywood;border-radius:5px; position: absolute; top: 10px; right: 90px;" href="{% url 'signup' %}">Signup</a>
+{% endif %}
+
+<div class="header-text">
+    <div style="color: black; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 30px; white-space: nowrap;">SHARIF CLINIC :)</div>
+    <div style="color: saddlebrown; position: absolute; top: 50px; left: 50%; transform: translateX(-50%); font-size: 20px;">WELCOME!</div>
+</div>
+
+<script>
+    // Wait for the document to be ready
+    document.addEventListener("DOMContentLoaded", function () {
+        // Display the success message
+        var successMessage = document.getElementById("success-message");
+        successMessage.style.opacity = 1;
+
+        // Set a timeout to hide the message after 1.5 seconds
+        setTimeout(function () {
+            successMessage.style.opacity = 0;
+        }, 1500);
+    });
+</script>
+
+<style>
+  body {
+    background-image: url("http://old.sharif.ir/image/image_gallery?uuid=8e8a282d-ccb5-4c65-a17f-0a0dbc1e017a&groupId=14502&t=1504500868411");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+    .header-text {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+

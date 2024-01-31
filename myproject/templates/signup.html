@@ -1,0 +1,19 @@
+<h1 style="color: white;">Signup</h1>
+<form style="color: white" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <button style="color: black;" type="submit">Signup</button>
+    <a style="color: blue;" href="{% url 'login' %}">Already have account?</a>
+</form>
+
+<div class="header-text">
+    <div style="color: black;position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 30px; white-space: nowrap;">SHARIF CLINIC :)</div>
+</div>
+
+<style>
+  body {
+    {#background-image: url("https://rozup.ir/view/2155849/LG_6348619%D9%84%D8%A7%D8%A8%DB%8C%20%D9%88%D8%B1%D9%88%D8%AF%DB%8C%201.jpg");#}
+      background-size: cover;
+      background: linear-gradient(to bottom, #567277, #732554) no-repeat center center;
+  }
+</style>
