@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # change 1
     path('', include('myapp.urls')),
+    path('', include('BookAppointment.urls')),
 ]

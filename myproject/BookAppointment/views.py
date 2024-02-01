@@ -1,7 +1,9 @@
-from django.shortcuts import redirect
-# from datetime import datetim, timedelta
-# from .models import *
+from django.shortcuts import redirect, render
+from datetime import datetime, timedelta
+from .models import *
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 # pages:
 # index(log out option)
@@ -48,3 +50,15 @@ def booking(request):
         # for the next time, don't show taken hours of that day for that clinic
 
 
+@login_required
+def staff_home(request):
+    # Check if the user's role is staff
+    if request.user.profile.role == 'staff':
+        return render(request, 'staff_home.html')
+    else:
+        # Redirect to a different page if the user is not staff
+        return redirect('home')
+
+
+def patient_home(request):
+    pass

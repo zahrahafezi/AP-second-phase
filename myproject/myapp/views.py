@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserCreationForm, LoginForm, SignupForm
 import sqlite3
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -22,36 +23,11 @@ def user_signup(request):
         form = SignupForm(request.POST)
         # if the form is valid
         if form.is_valid():
-            # اگر کاربر بیمار باشد
-            if form.cleaned_data['role'] == 'patient':
-                # TODO this part
-                # انجام اقدامات مربوط به کاربر بیمار
-                pass
-            # اگر کاربر منشی باشد
-            elif form.cleaned_data['role'] == 'secretary':
-                # TODO this part
-                # انجام اقدامات مربوط به کاربر منشی
-                pass
             # saving the user in the database
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            # role = form.cleaned_data['role']
-            #
-            # # Connect to your SQLite database
-            # connection = sqlite3.connect\
-            #     ("C:/Users/TUF/Desktop/ap project/AP-second-phase/myproject/clinic reservation.db")
-            # cursor = connection.cursor()
-            #
-            # cursor.execute('''
-            #                 INSERT INTO users (name, password, user_type)
-            #                 VALUES (?, ?, ?)
-            #             ''', (username, password, role))
-            #
-            # # Commit changes and close the connection
-            # connection.commit()
-            # connection.close()
-
+            role = form.cleaned_data['role']
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
@@ -76,7 +52,12 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+
+                # Check user role and redirect accordingly
+                if User.role == 'Secretary':
+                    return redirect('staff_home')
+                elif User.SignupForm.role == 'patient':
+                    return redirect('patient_home')
             else:
                 messages.success(request, "!کاربری با این مشخصات یافت نشد")
                 return redirect('login')
