@@ -8,26 +8,24 @@ from django.contrib import messages
 # sign_up
 # log_in
 # index_staff(calendar, user panel)
-# update_profile staff
-# Update_Clinic_Info staff
+### update_profile staff
+### Update_Clinic_Info staff
 # index_patient(online booking, calendar, user panel)
-# update_profile patient
-# rate_clinic
+### update_profile patient
 
 
 # for staff:
-# update_profile (need a page for it. Through user panel.)
+### update_profile (need a page for it. Through user panel.)
 # view_appointment (in calendar page)
-# Update_Clinic_Info (need a page for it. Through user panel)
+### Update_Clinic_Info (need a page for it. Through user panel)
 # cancel_appointment (in calendar page.)
 
 # for user:
 # view_appointment (in calendar page)
-# update_profile (need a page for it. Through user panel.)
+### update_profile (need a page for it. Through user panel.)
 # book_appointment (user booking page)
 # cancel_appointment (in calendar page.)
-# update_booking_time (redirect to user booking page but with the same clinic.)
-# rate_clinic (need a page for it. Through calendar page for past appointments.)
+### update_booking_time (redirect to user booking page but with the same clinic.)
 
 
 # user_booking

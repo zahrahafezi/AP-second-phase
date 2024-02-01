@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserCreationForm, LoginForm, SignupForm
+import sqlite3
 
 
 # Create your views here.
@@ -35,6 +36,22 @@ def user_signup(request):
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
+            # role = form.cleaned_data['role']
+            #
+            # # Connect to your SQLite database
+            # connection = sqlite3.connect\
+            #     ("C:/Users/TUF/Desktop/ap project/AP-second-phase/myproject/clinic reservation.db")
+            # cursor = connection.cursor()
+            #
+            # cursor.execute('''
+            #                 INSERT INTO users (name, password, user_type)
+            #                 VALUES (?, ?, ?)
+            #             ''', (username, password, role))
+            #
+            # # Commit changes and close the connection
+            # connection.commit()
+            # connection.close()
+
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
