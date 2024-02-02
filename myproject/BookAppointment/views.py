@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from .forms import BookingForm
 
 # pages:
 # index(log out option)
@@ -71,3 +71,16 @@ def calendar_patient(request):
     return render(request, 'calendar_patient.html')
 
 
+@login_required
+def booking(request):
+    if request.user.is_authenticated and request.user.userrole.role == 'patient':
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('confirmation')
+        else:
+            form = BookingForm()
+        return render(request, 'book_appointment.html', {'form': form})
+    else:
+        return redirect('login')
