@@ -81,6 +81,6 @@ def booking(request):
                 return redirect('confirmation')
         else:
             form = BookingForm()
-        return render(request, 'book_appointment.html', {'form': form})
+        return render(request, 'user_booking.html', {'form': form})
     else:
         return redirect('login')
