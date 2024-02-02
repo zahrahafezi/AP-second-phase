@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import UserCreationForm, LoginForm, SignupForm
-import sqlite3
-from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -23,11 +21,20 @@ def user_signup(request):
         form = SignupForm(request.POST)
         # if the form is valid
         if form.is_valid():
+            # اگر کاربر بیمار باشد
+            if form.cleaned_data['role'] == 'patient':
+                # TODO this part
+                # انجام اقدامات مربوط به کاربر بیمار
+                pass
+            # اگر کاربر منشی باشد
+            elif form.cleaned_data['role'] == 'secretary':
+                # TODO this part
+                # انجام اقدامات مربوط به کاربر منشی
+                pass
             # saving the user in the database
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            role = form.cleaned_data['role']
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
@@ -49,15 +56,23 @@ def user_login(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
+            user_type = form.cleaned_data['user_type']
 
-                # Check user role and redirect accordingly
-                if User.role == 'Secretary':
-                    return redirect('staff_home')
-                elif User.SignupForm.role == 'patient':
-                    return redirect('patient_home')
+            user = authenticate(request, username=username, password=password)
+
+            if user:
+                if user.userrole.role == user_type:
+                    # login the user
+                    login(request, user)
+                    # redirect the user to the appropriate page based on the user type
+                    if user_type == 'patient':
+                        return redirect('patient')
+                    elif user_type == 'secretary':
+                        return redirect('secretary')
+                else:
+                    # show an error message that the user type is incorrect
+                    messages.error(request, "!نوع کاربری وارد شده صحیح نیست")
+                    return redirect('login')
             else:
                 messages.success(request, "!کاربری با این مشخصات یافت نشد")
                 return redirect('login')
@@ -74,4 +89,26 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
+
 # TODO massage , clinic member views
+
+# new
+def patient(request):
+    # check if the user is logged in and is a patient
+    if request.user.is_authenticated and request.user.userrole.role == 'patient':
+        # render the patient page
+        return render(request, 'patient.html')
+    else:
+        # redirect to the login page
+        return redirect('login')
+
+
+# new
+def secretary(request):
+    # check if the user is logged in and is a secretary
+    if request.user.is_authenticated and request.user.userrole.role == 'secretary':
+        # render the secretary page
+        return render(request, 'secretary.html')
+    else:
+        # redirect to the login page
+        return redirect('login')
