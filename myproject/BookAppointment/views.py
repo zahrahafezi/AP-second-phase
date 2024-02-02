@@ -31,34 +31,33 @@ from django.contrib.auth.decorators import login_required
 
 
 # user_booking
-def booking(request):
-    if request.method == 'POST':
-        clinic = request.POST.get('clinic')
-        day = request.POST.get('day')
-        hour = request.POST.get('hour')
-        if clinic == None:
-            messages.success(request, "Please Select A clinic!")
-            return redirect('booking')
-        if day == None:
-            messages.success(request, "Please Select A day!")
-            return redirect('booking')
-        if hour == None:
-            messages.success(request, "Please Select A hour!")
-            return redirect('booking')
+# def booking(request):
+#     if request.method == 'POST':
+#         clinic = request.POST.get('clinic')
+#         day = request.POST.get('day')
+#         hour = request.POST.get('hour')
+#         if clinic == None:
+#             messages.success(request, "Please Select A clinic!")
+#             return redirect('user_booking')
+#         if day == None:
+#             messages.success(request, "Please Select A day!")
+#             return redirect('user_booking')
+#         if hour == None:
+#             messages.success(request, "Please Select A hour!")
+#             return redirect('user_booking')
+#     return redirect('user_booking')
 
         # update taken times for that clinic in database:
         # for the next time, don't show taken hours of that day for that clinic
 
 
-@login_required
-def staff_home(request):
-    # Check if the user's role is staff
-    if request.user.profile.role == 'staff':
-        return render(request, 'staff_home.html')
-    else:
-        # Redirect to a different page if the user is not staff
-        return redirect('home')
+def booking(request):
+    return render(request, 'user_booking.html')
 
 
-def patient_home(request):
-    pass
+def profile_patient(request):
+    return render(request, 'profile_patient.html')
+
+
+def profile_secretary(request):
+    return render(request, 'profile_secretary.html')
