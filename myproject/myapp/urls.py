@@ -9,3 +9,5 @@ urlpatterns = [
     path('patient/', views.patient, name='patient'),  # new
     path('secretary/', views.secretary, name='secretary'),  # new
 ]
+
+# TODO چرا در اندکس اچ تی ام ال وارد صفحه اصلی میشه و لاگ اوت و دیگه چیزی نی

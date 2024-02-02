@@ -5,6 +5,39 @@
     <title>SHARIF CLINIC</title>
 </head>
 <body>
-    <h1 style="text-align: center;">SHARIF CLINIC</h1>
+    <h1 style="text-align: center;color: #003366">SHARIF CLINIC</h1>
+    <!-- remove the blink class from this element -->
+    <p style="color: black;font-size: 20px" class="blink"><strong>Welcome to big Sharif Clinic!</strong></p>
+    <!-- add the strong tag around the text -->
+    <p style="font-size: 18px" class="blink"><strong>this clinic is the largest clinic in the Middle East.</strong></p>
+    <!-- add the strong tag around the text -->
+    <p style="font-size: 18px" class="blink"><strong>Sharif Clinic can book an appointment for you from thousands of other clinics that are registeres in it.</strong></p>
+    <!-- add the strong tag around the text -->
+    <p style="font-size: 18px" class="blink"><strong>Thank you for your trust.</strong></p>
+    <!-- add the strong tag around the text -->
+    <p style="font-size: 18px" class="blink"><strong>dear patient!</strong></p>
+    <p style="color: rebeccapurple;"><strong>what would you like us to do for you?</strong></p>
+    <!-- remove the blink class from this element -->
+    <a href="{% url 'book_appointment' %}" class="btn btn-primary">BookAppointment</a>
 </body>
+
+<script type="text/javascript">
+function blinktext() {
+  var f = document.getElementsByClassName("blink");
+  for (var i = 0; i < f.length; i++) {
+    f[i].style.visibility = (f[i].style.visibility == "hidden" ? "" : "hidden");
+  }
+}
+window.onload = function() {
+  setInterval(blinktext, 1000);
+};
+</script>
+
+<style>
+    body {
+        height: 100vh;
+  background: linear-gradient(to bottom, #7283f3, #56b2b6);
+}
+
+</style>
 </html>

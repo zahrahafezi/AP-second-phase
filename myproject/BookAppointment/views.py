@@ -36,13 +36,13 @@ def booking(request):
         clinic = request.POST.get('clinic')
         day = request.POST.get('day')
         hour = request.POST.get('hour')
-        if clinic == None:
+        if clinic is None:
             messages.success(request, "Please Select A clinic!")
             return redirect('booking')
-        if day == None:
+        if day is None:
             messages.success(request, "Please Select A day!")
             return redirect('booking')
-        if hour == None:
+        if hour is None:
             messages.success(request, "Please Select A hour!")
             return redirect('booking')
 
