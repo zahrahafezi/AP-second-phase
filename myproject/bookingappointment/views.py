@@ -31,3 +31,14 @@ def user_appointments(request):
     # اطلاعات بیماران جاری را از پایگاه داده استخراج کنید
     appointments = Booking.objects.filter(patient=request.user)
     return render(request, 'user_appointments.html', {'appointments': appointments})
+
+
+def receptionist_dashboard(request):
+    # دریافت همه‌ی نوبت‌ها از پایگاه داده
+    appointments = Booking.objects.filter(patient=request.user)
+
+    # ارسال لیست نوبت‌ها به تمپلیت
+    return render(request, 'receptionist_dashboard.html', {'appointments': appointments})
+
+
+

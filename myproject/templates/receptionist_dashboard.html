@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <title>SHARIF CLINIC</title>
-</head>
-<body>
-    <h1 style="text-align: center;">SHARIF CLINIC</h1>
-</body>
-</html>
+{% block title %}Receptionist Dashboard{% endblock %}
 
-  <h1>Receptionist Dashboard</h1>
+
 {% block content %}
-  <h2>Your Appointments:</h2>
+  <h1>Receptionist Dashboard</h1>
   {% if appointments %}
     <table>
       <thead>
@@ -41,12 +32,3 @@
     <p>You have no appointments yet.</p>
   {% endif %}
 {% endblock %}
-
-
-<style>
-    body {
-        height: 100vh;
-  background: linear-gradient(to bottom, #7283f3, #56b2b6);
-}
-
-</style>
