@@ -48,8 +48,8 @@ DOCTOR_CHOICES = [
 class Booking(models.Model):
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    date = models.DateField(choices=DATE_CHOICES)
-    time = models.TimeField(choices=TIME_CHOICES)
+    date = models.CharField(max_length=50, choices=DATE_CHOICES)
+    time = models.CharField(max_length=50, choices=TIME_CHOICES)
     clinic = models.CharField(max_length=50, choices=CLINIC_CHOICES)
     doctor = models.CharField(max_length=50, choices=DOCTOR_CHOICES)
     Disease = models.CharField(max_length=50)

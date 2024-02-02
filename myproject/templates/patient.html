@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>SHARIF CLINIC</title>
 </head>
+
+
 <body>
     <h1 style="text-align: center;color: #003366">SHARIF CLINIC</h1>
     <!-- remove the blink class from this element -->
@@ -18,7 +20,9 @@
     <p style="font-size: 18px" class="blink"><strong>dear patient!</strong></p>
     <p style="color: rebeccapurple;"><strong>what would you like us to do for you?</strong></p>
     <!-- remove the blink class from this element -->
-    <a href="{% url 'book_appointment' %}" class="btn btn-primary">BookAppointment</a>
+    <a style="color: darkorchid" href="{% url 'book_appointment' %}" class="btn btn-primary">BookAppointment</a>
+
+    <a style="color: #ba2121" href="{% url 'user_appointments' %}">View Your Appointments</a>
 </body>
 
 <script type="text/javascript">

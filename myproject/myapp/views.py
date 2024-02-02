@@ -23,12 +23,10 @@ def user_signup(request):
         if form.is_valid():
             # اگر کاربر بیمار باشد
             if form.cleaned_data['role'] == 'patient':
-                # TODO this part
                 # انجام اقدامات مربوط به کاربر بیمار
                 pass
             # اگر کاربر منشی باشد
             elif form.cleaned_data['role'] == 'secretary':
-                # TODO this part
                 # انجام اقدامات مربوط به کاربر منشی
                 pass
             # saving the user in the database
@@ -89,8 +87,6 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
-
-# TODO massage , clinic member views
 
 # new
 def patient(request):

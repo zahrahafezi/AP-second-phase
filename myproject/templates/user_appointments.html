@@ -1,0 +1,42 @@
+<!-- user_appointments.html -->
+
+{% block content %}
+  <h2>Your Appointments</h2>
+  {% if appointments %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Clinic</th>
+          <th>Doctor</th>
+          <th>Disease</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.clinic }}</td>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.Disease }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You have no appointments yet.</p>
+  {% endif %}
+{% endblock %}
+
+
+<style>
+    body {
+        height: 100vh;
+  background: linear-gradient(to bottom, #b45633, #09a4e7);
+}
+
+</style>

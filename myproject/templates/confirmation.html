@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <title>SHARIF CLINIC</title>
-</head>
-<body>
-    <h1 style="text-align: center;">SHARIF CLINIC</h1>
-</body>
-</html>
+{% block content %}
+    <h1>Booking Confirmed</h1>
+    <p>Thank you for booking an appointment with us.</p>
+    <p>Your booking details are:</p>
+    <ul>
+        <li>Name: {{ booking.name }}</li>
+        <li>Date: {{ booking.date }}</li>
+        <li>Time: {{ booking.time }}</li>
+        <li>Clinic: {{ booking.clinic }}</li>
+        <li>Doctor: {{ booking.doctor }}</li>
+        <li>Disease: {{ booking.Disease }}</li>
+    </ul>
+
+    <!-- دکمه برای بازگشت به صفحه بوکینگ -->
+  <a href="{% url 'patient' %}" class="btn btn-primary">Back to your page!</a>
+{% endblock %}
+
+
+<style>
+    body {
+        height: 100vh;
+  background: linear-gradient(to bottom, #b43977, #dccf3f);
+}
+
+</style>
+
