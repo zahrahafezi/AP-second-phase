@@ -47,8 +47,8 @@ from django.contrib.auth.decorators import login_required
 #             return redirect('user_booking')
 #     return redirect('user_booking')
 
-        # update taken times for that clinic in database:
-        # for the next time, don't show taken hours of that day for that clinic
+# update taken times for that clinic in database:
+# for the next time, don't show taken hours of that day for that clinic
 
 
 def booking(request):
@@ -61,3 +61,13 @@ def profile_patient(request):
 
 def profile_secretary(request):
     return render(request, 'profile_secretary.html')
+
+
+def calendar_secretary(request):
+    return render(request, 'calendar_secretary.html')
+
+
+def calendar_patient(request):
+    return render(request, 'calendar_patient.html')
+
+
