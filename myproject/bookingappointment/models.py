@@ -1,22 +1,55 @@
-from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
+TIME_CHOICES = [
+    ('10:00', '10:00'),
+    ('10:30', '10:30'),
+    ('11:00', '11:00'),
+    ('11:30', '11:30'),
+    ('12:00', '12:00'),
+    ('12:30', '12:30'),
+    ('13:00', '13:00'),
+    ('13:30', '13:30'),
+    ('14:00', '14:00'),
+    ('14:30', '14:30'),
+    ('15:00', '15:00'),
+    ('15:30', '15:30'),
+    ('16:00', '16:00')
+]
+DATE_CHOICES = [
+    ('Saturday', 'Saturday'),
+    ('Sunday', 'Sunday'),
+    ('Monday', 'Monday'),
+    ('Tuesday', 'Tuesday'),
+    ('Wednesday', 'Wednesday')
+]
+CLINIC_CHOICES = [
+    ('Health Plus Clinic', 'Health Plus Clinic'),
+    ('Care Wellness Center', 'Care Wellness Center'),
+    ('Harmony Medical Group', 'Harmony Medical Group'),
+    ('Vitality Clinic', 'Vitality Clinic'),
+    ('Wellness Solutions Center', 'Wellness Solutions Center'),
+    ('Heartland Family Health', 'Heartland Family Health'),
+    ('Precision Dental Care', 'Precision Dental Care'),
+    ('Radiant Skin Clinic', 'Radiant Skin Clinic')
+]
+DOCTOR_CHOICES = [
+    ('Dr. Emily Johnson', 'Dr. Emily Johnson'),
+    ('Dr. Michael Smith', 'Dr. Michael Smith'),
+    ('Dr. Sarah Davis', 'Dr. Sarah Davis'),
+    ('Dr. Robert Anderson', 'Dr. Robert Anderson'),
+    ('Dr. Jessica White', 'Dr. Jessica White'),
+    ('Dr. Brian Miller', 'Dr. Brian Miller'),
+    ('Dr. Jennifer Brown', 'Dr. Jennifer Brown'),
+    ('Dr. Christopher Lee', 'Dr. Christopher Lee')
+]
+
 
 class Booking(models.Model):
-    # one-to-many relation with the User model
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
-    # booking fields
-    date = models.DateField()
-    time = models.TimeField()
-    doctor = models.CharField(max_length=50)
-    reason = models.CharField(max_length=200)
-
-    @classmethod
-    def get_available_times(cls, date):
-        # get the booked time slots for the date
-        booked_times = cls.objects.filter(date=date).values_list('time', flat=True)
-        # get the possible time slots from 8 AM to 4 PM with 30 minutes interval
-        possible_times = [datetime.time(hour=h, minute=m) for h in range(8, 17) for m in (0, 30)]
-        # return the difference between the possible and booked time slots
-        return list(set(possible_times) - set(booked_times))
+    name = models.CharField(max_length=50)
+    date = models.DateField(choices=DATE_CHOICES)
+    time = models.TimeField(choices=TIME_CHOICES)
+    clinic = models.CharField(max_length=50, choices=CLINIC_CHOICES)
+    doctor = models.CharField(max_length=50, choices=DOCTOR_CHOICES)
+    Disease = models.CharField(max_length=50)
