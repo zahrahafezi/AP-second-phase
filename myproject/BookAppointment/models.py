@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+<<<<<<< Updated upstream
 
 TIME_CHOICES = [
     ('10:00', '10:00'),
@@ -56,3 +57,14 @@ class Booking(models.Model):
 
     class Meta:
         app_label = 'BookAppointment'
+=======
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    have_clinic = models.TextField(default=False)
+
+    class Meta:
+        app_label = 'BookAppointment'
+
+>>>>>>> Stashed changes

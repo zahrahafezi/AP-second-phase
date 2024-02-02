@@ -70,6 +70,7 @@ def calendar_secretary(request):
 def calendar_patient(request):
     return render(request, 'calendar_patient.html')
 
+<<<<<<< Updated upstream
 
 @login_required
 def booking(request):
@@ -84,3 +85,16 @@ def booking(request):
         return render(request, 'user_booking.html', {'form': form})
     else:
         return redirect('login')
+=======
+# def get_clinic_info(request):
+#     user = request.user
+#     try:
+#         user_profile = UserProfile.objects.get(user=user)
+#
+#         if not user_profile.have_clinic:
+#     except UserProfile.DoesNotExist:
+#         pass
+#
+#     return render(request, 'secretary', {'user_profile': user_profile})
+#
+>>>>>>> Stashed changes

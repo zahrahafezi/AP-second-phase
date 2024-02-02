@@ -1,0 +1,36 @@
+<!--<h1 style="color: white;">clinic info</h1>-->
+<!--<form style="color: white" method="POST">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--        <button style="color: black;" type="submit">submit</button>-->
+<!--    <a style="color: blue;" href="{% url 'login' %}">Already have a clinic?</a>-->
+<!--</form>-->
+
+<!--<div class="header-text">-->
+<!--    <div style="color: black;position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 30px; white-space: nowrap;">CLINIC info</div>-->
+<!--</div>-->
+
+<!--<style>-->
+<!--  body {-->
+<!--    {#background-image: url("https://rozup.ir/view/2155849/LG_6348619%D9%84%D8%A7%D8%A8%DB%8C%20%D9%88%D8%B1%D9%88%D8%AF%DB%8C%201.jpg");#}-->
+<!--      background-size: cover;-->
+<!--      background: linear-gradient(to bottom, #567277, #732554) no-repeat center center;-->
+<!--  }-->
+<!--</style>-->
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>My Form</title>
+</head>
+<body>
+    <h1>My Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
