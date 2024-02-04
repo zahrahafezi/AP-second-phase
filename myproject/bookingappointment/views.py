@@ -32,9 +32,9 @@ def user_appointments(request):
     return render(request, 'user_appointments.html', {'appointments': appointments})
 
 
-def receptionist_dashboard(request):
-    appointments = Booking.objects.filter(status='booked')
-    return render(request, 'receptionist_dashboard.html', {'appointments': appointments})
+def secretary(request):
+    appointments = Booking.objects.all()
+    return render(request, 'secretary.html', {'appointments': appointments})
 
 
 

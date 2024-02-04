@@ -5,5 +5,5 @@ urlpatterns = [
     path('book_appointment/', views.book_appointment, name='book_appointment'),
     path('confirmation/<int:pk>/', views.confirmation, name='confirmation'),
     path('user_appointments/', views.user_appointments, name='user_appointments'),
-    path('receptionist_dashboard/', views.receptionist_dashboard, name='receptionist_dashboard'),
+    path('secretary/', views.secretary, name='secretary'),
 ]

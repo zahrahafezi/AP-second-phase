@@ -51,7 +51,6 @@ class Booking(models.Model):
         ('cancelled', 'Cancelled'),
         ('completed', 'Completed'),
     )
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     date = models.CharField(max_length=50, choices=DATE_CHOICES)
@@ -59,4 +58,6 @@ class Booking(models.Model):
     clinic = models.CharField(max_length=50, choices=CLINIC_CHOICES)
     doctor = models.CharField(max_length=50, choices=DOCTOR_CHOICES)
     Disease = models.CharField(max_length=50)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')
+
 

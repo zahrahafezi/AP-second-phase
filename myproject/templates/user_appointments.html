@@ -1,6 +1,8 @@
 <!-- user_appointments.html -->
-
-<!-- user_appointments.html -->
+    <title>SHARIF CLINIC</title>
+    <h1 style="text-align: center;color: #003366">SHARIF CLINIC</h1>
+    <a style="color: brown;background-color: burlywood;border-radius:5px;position: absolute; top: 10px; right: 10px;" href="{% url 'logout' %}">Logout</a>
+<button style="background-color: #79aec8;color: #003366;position: absolute ;top: 40px; right: 10px" onclick="history.back()">Back</button>
 
 {% block content %}
   <h2 style="text-align: center">Your Appointments</h2>
@@ -9,23 +11,27 @@
     <table class="centerTable">
       <thead>
         <tr>
+          <th>Number</th>
           <th>Name</th>
           <th>Date</th>
           <th>Time</th>
           <th>Clinic</th>
           <th>Doctor</th>
           <th>Disease</th>
+                      <th>status</th>
         </tr>
       </thead>
       <tbody>
         {% for appointment in appointments %}
           <tr>
+            <td></td>
             <td>{{ appointment.name }}</td>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.time }}</td>
             <td>{{ appointment.clinic }}</td>
             <td>{{ appointment.doctor }}</td>
             <td>{{ appointment.Disease }}</td>
+                      <td>{{ appointment.status }}</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -39,14 +45,56 @@
 <style>
     body {
         height: 100vh;
-  background: linear-gradient(to bottom, #b43977, #09a4e7);
-}
-/* تعریف خاصیت‌های margin-left و margin-right برای کلاس centerTable */
-.centerTable {
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
+        background: linear-gradient(to bottom, #b43977, #09a4e7);
+    }
+    /* تعریف خاصیت‌های margin-left و margin-right برای کلاس centerTable */
+    .centerTable {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-<button style="background-color: #79aec8;color: #003366;position: absolute ;top: 40px; right: 10px" onclick="history.back()">بازگشت</button>
-    <a style="color: brown;background-color: burlywood;border-radius:5px;position: absolute; top: 10px; right: 10px;" href="{% url 'logout' %}">Logout</a>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tbody tr {
+      counter-increment: rowNumber;
+    }
+
+    tbody td:first-child::before {
+      content: counter(rowNumber);
+      min-width: 1em;
+      margin-right: 0.5em;
+      color: #4CAF50;
+    }
+
+    button {
+      background-color: #79aec8;
+      color: #003366;
+      position: absolute;
+      top: 40px;
+      right: 10px;
+    }
+
+    a {
+      color: brown;
+      background-color: burlywood;
+      border-radius: 5px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+</style>
