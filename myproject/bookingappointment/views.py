@@ -14,7 +14,7 @@ def book_appointment(request):
                 booking = form.save(commit=False)
                 booking.patient_id = request.user.id
                 booking.save()
-                return redirect('confirmation', pk=booking.pk)  # Pass booking id as parameter
+                return redirect('confirmation', pk=booking.pk)
         else:
             form = BookingForm()
         return render(request, 'book_appointment.html', {'form': form})
@@ -28,16 +28,12 @@ def confirmation(request, pk):
 
 
 def user_appointments(request):
-    # اطلاعات بیماران جاری را از پایگاه داده استخراج کنید
     appointments = Booking.objects.filter(patient=request.user)
     return render(request, 'user_appointments.html', {'appointments': appointments})
 
 
 def receptionist_dashboard(request):
-    # دریافت همه‌ی نوبت‌ها از پایگاه داده
-    appointments = Booking.objects.filter(patient=request.user)
-
-    # ارسال لیست نوبت‌ها به تمپلیت
+    appointments = Booking.objects.filter(status='booked')
     return render(request, 'receptionist_dashboard.html', {'appointments': appointments})
 
 

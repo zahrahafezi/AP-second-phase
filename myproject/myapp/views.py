@@ -34,8 +34,8 @@ def user_signup(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('home')
+            messages.success(request, "!ثبت نام با موفقیت انجام شد.")
+            return redirect('login')
     # if the request type is GET
     else:
         # create an empty registration form object

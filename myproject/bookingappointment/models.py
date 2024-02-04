@@ -46,6 +46,12 @@ DOCTOR_CHOICES = [
 
 
 class Booking(models.Model):
+    STATUS_CHOICES = (
+        ('booked', 'Booked'),
+        ('cancelled', 'Cancelled'),
+        ('completed', 'Completed'),
+    )
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='booked')
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     date = models.CharField(max_length=50, choices=DATE_CHOICES)

@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Booking
+
+# ثبت مدل Booking در پنل ادمین
+admin.site.register(Booking)
